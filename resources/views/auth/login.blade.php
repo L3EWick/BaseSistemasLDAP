@@ -8,7 +8,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-		<title>TRAFIC</title>
+		<title>NASF</title>
 	
 		<!--     Fonts and icons     -->
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel="stylesheet">
@@ -50,19 +50,22 @@
 						<form method="POST" action="{{ route('login') }}">
 							{{ csrf_field() }}
 							
-							<h1 class="cor_texto_roxo">TRAFIC - Sistema de Gestão da SETRANS</h1>
+							<h1 class="cor_texto_roxo">NASF</h1>
 							
 							<div class="form-group row">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12" for="email">Email:</label>
+								<label class="control-label col-md-2 col-sm-2 col-xs-12" for="email">Usuário:</label>
 								<div class="col-md-10 col-sm-10 col-xs-12">
-									<input type="email" name="email" id="email_fake" autocomplete="off" style="display: none;" />
+									<input type="text" name="dominio" id="dominio" autocomplete="off" style="display: none;" value="@mesquita.rj.gov.br" />
+									<input type="text" name="username" id="username" placeholder="Usuario" autocomplete="off" style="display: block;"  />
   								
-									<input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required >
-									@if ($errors->has('email'))
+									<input id="email" type="text" placeholder="Usuario" style="display: none;" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"  required >
+									{{-- @if ($errors->has('email'))
 										<span class="invalid-feedback">
 											<strong>{{ $errors->first('email') }}</strong>
 										</span>
-									@endif	
+									@endif	 --}}
+
+									{{-- <input type='text' id='nomeSacado' name='nomeSacado' size="58" onclick='Concatena();' placeholder="Clique aqui para concatenar"/> --}}
 								</div>
 							</div>
 							
@@ -71,17 +74,17 @@
 								<div class="col-md-10 col-sm-10 col-xs-12">
 										<input id="password" type="password" placeholder="Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required autocomplete="off">
 								
-										@if ($errors->has('password'))
+										{{-- @if ($errors->has('password'))
 										<span class="invalid-feedback">
 											<strong>{{ $errors->first('password') }}</strong>
 										</span>
-										@endif
+										@endif --}}
 								</div>
 							</div>
 
 							
 							<div>
-								<button type="submit" class="btn btn-default submit">
+								<button  onclick='Concatena();' type="submit" class="btn btn-default submit">
 									Login
 								</button>               
 								
@@ -130,6 +133,21 @@
 		</script>
 
 
+	<script>
+		
+
+
+
+				function Concatena()
+				{
+				//atribui a variável nome o valor do input cujo id = nome
+				var nome = document.getElementById('username').value;
+				//atribui a variável numProcesso o valor do input cujo id = numProcesso
+				var numProcesso = document.getElementById('dominio').value; 
+				//concatena as duas variaveis separadas por espaço e joga no value do input cujo id = nomeSacado
+				document.getElementById('email').value=nome+numProcesso;
+}
+	</script>	
 		
 		
 
